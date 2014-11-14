@@ -40,6 +40,7 @@ feature 'Short Urls Create' do
       it 'should store the source and shortend url' do
         expect(@short_url.source_url).to eq 'http://google.com'
         expect(@short_url.value).to be_present
+        expect(@short_url.slug).to be_present
       end
 
       it 'should include the base url in the shortened url' do

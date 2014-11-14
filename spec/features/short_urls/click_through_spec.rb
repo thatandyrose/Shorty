@@ -6,7 +6,7 @@ feature 'Short Url Click through' do
   context 'when I visit the shortned url' do
     
     before do
-      visit @short_url.value
+      visit click_short_urls_path(@short_url.slug)
     end
 
     it 'should land on google.com' do
@@ -18,7 +18,7 @@ feature 'Short Url Click through' do
     end
 
     it 'should record the referrer for that click' do
-      expect(@short_url.request['referrer']).to eq 'http://test.com'
+      expect(@short_url.clicks.first.request['referrer']).to eq 'http://test.com'
     end
 
   end
